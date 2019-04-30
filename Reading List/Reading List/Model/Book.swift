@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Book: Codable {
+class Book: Codable {
     var title: String
     var reasonToRead: String
     var hasBeenRead: Bool
@@ -21,5 +21,9 @@ struct Book: Codable {
 }
 
 extension Book: Equatable {
+    static func == (lhs: Book, rhs: Book) -> Bool {
+        return lhs.title == rhs.title && lhs.hasBeenRead == rhs.hasBeenRead && lhs.reasonToRead == rhs.reasonToRead
+    }
+    
     
 }

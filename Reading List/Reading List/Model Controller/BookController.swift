@@ -62,6 +62,10 @@ class BookController {
         saveToPersistentStore()
     }
     
+    func toggle(book: Book){
+        book.hasBeenRead = !book.hasBeenRead
+    }
+    
     var readBooks: [Book] {
         return books.filter{ $0.hasBeenRead }
     }

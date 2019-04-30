@@ -21,7 +21,7 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var checkButtonProperties: UIButton!
   
     @IBAction func checkMarkButtonPressed(_ sender: UIButton) {
-        delegate?.toggleHasBeenRead(on: self)
+        delegate?.toggleHasBeenRead(for: self)
     }
     
     private func updateViews(){

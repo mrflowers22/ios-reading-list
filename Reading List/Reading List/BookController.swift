@@ -49,4 +49,24 @@ class BookController {
             print("Error loadng from the persistentStore: \(error.localizedDescription)")
         }
     }
+    
+    func createBook(with title: String, andReason reasonToRead: String){
+        let book = Book(title: title, reasonToRead: reasonToRead)
+        books.append(book)
+        saveToPersistentStore()
+    }
+    
+    func delete(book: Book){
+        guard let bookToDelete = books.index(of: book) else { return }
+        books.remove(at: bookToDelete)
+        saveToPersistentStore()
+    }
+    
+    var readBooks: [Book] {
+        return books.filter{ $0.hasBeenRead }
+    }
+    
+    var unReadBooks: [Book] {
+        return books.filter { !$0.hasBeenRead }
+    }
 }

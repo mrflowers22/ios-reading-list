@@ -11,6 +11,10 @@ import Foundation
 class BookController {
     var books: [Book] = []
     
+    init() {
+        loadFromPersistentStore()
+    }
+    
     //create a computed property
     var readingListURL: URL? {
         

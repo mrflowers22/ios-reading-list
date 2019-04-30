@@ -16,8 +16,8 @@ class ReadingListTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
@@ -42,7 +42,7 @@ class ReadingListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BookTableViewCell
          let bookToPass = booksFor(indexPath: indexPath)
         cell.book = bookToPass
-//        cell.delegate = self
+        cell.delegate = self
         // Configure the cell...
 
         return cell
@@ -72,6 +72,7 @@ class ReadingListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Read Books" : "Unread Books"
+        
     }
 
     
@@ -91,17 +92,15 @@ class ReadingListTableViewController: UITableViewController {
             destinationVC.book = booksFor(indexPath: indexPath)
         }
     }
- 
-
 }
 
 extension ReadingListTableViewController: BookTableViewCellDelegate {
     func toggleHasBeenRead(for cell: BookTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let book = booksFor(indexPath: indexPath)
+        print(book.hasBeenRead)
         bc.toggle(book: book)
+        print(book.hasBeenRead)
         tableView.reloadData()
     }
-    
-    
 }

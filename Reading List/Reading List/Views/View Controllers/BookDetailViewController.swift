@@ -31,6 +31,7 @@ class BookDetailViewController: UIViewController {
         } else if let passedInBook = book{
             bc?.update(book: passedInBook, with: title, and: reason)
         }
+        navigationController?.popToRootViewController(animated: true)
     }
     
     private func updateViews(){

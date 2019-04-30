@@ -14,6 +14,7 @@ class BookTableViewCell: UITableViewCell {
     var book: Book? {
         didSet {
             updateViews()
+            print(book?.title)
         }
     }
     
@@ -28,8 +29,10 @@ class BookTableViewCell: UITableViewCell {
         guard let passedInBook = book else { return }
         titleLabel.text = passedInBook.title
         
-        guard let buttonImage = passedInBook.hasBeenRead ? UIImage(named: "checked") : UIImage(named: "unchecked") else { return }
-        checkButtonProperties.imageView?.image = buttonImage
+//        guard let buttonImage = passedInBook.hasBeenRead ? UIImage(named: "checked") : UIImage(named: "unchecked") else { return }
+        guard let buttonImage = passedInBook.hasBeenRead ? "checked" : "unchecked" else { return }
+        checkButtonProperties.imageView?.image = UIImage(named: buttonImage)
+        print("\(buttonImage)")
     }
     
 }

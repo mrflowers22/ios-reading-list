@@ -16,6 +16,11 @@ class ReadingListTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,6 +69,10 @@ class ReadingListTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Read Books" : "Unread Books"
+    }
 
     /*
     // MARK: - Navigation
@@ -79,7 +88,10 @@ class ReadingListTableViewController: UITableViewController {
 
 extension ReadingListTableViewController: BookTableViewCellDelegate {
     func toggleHasBeenRead(for cell: BookTableViewCell) {
-        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let book = booksFor(indexPath: indexPath)
+        bc.toggle(book: book)
+        tableView.reloadData()
     }
     
     

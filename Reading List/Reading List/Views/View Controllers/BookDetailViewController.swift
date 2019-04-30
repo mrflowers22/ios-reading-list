@@ -9,6 +9,8 @@
 import UIKit
 
 class BookDetailViewController: UIViewController {
+    var bc: BookController?
+    var book: Book?
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var reasonTextView: UITextView!
@@ -20,16 +22,22 @@ class BookDetailViewController: UIViewController {
     }
     
     @IBAction func saveBook(_ sender: UIBarButtonItem) {
+        guard let title = titleTextField.text, !title.isEmpty, let reason = reasonTextView.text, !reason.isEmpty else { return }
+        if book == nil {
+            bc?.createBook(with: title, andReason: reason)
+        } else {
+            bc.
+        }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateViews(){
+        if let passedInBook = book {
+            title = passedInBook.title
+            titleTextField.text = passedInBook.title
+            reasonTextView.text = passedInBook.reasonToRead
+        } else {
+            title = "Add a new book"
+        }
     }
-    */
 
 }

@@ -56,6 +56,12 @@ class BookController {
         saveToPersistentStore()
     }
     
+    func update(book: Book, with newTitle: String, and newReason: String){
+        book.title = newTitle
+        book.reasonToRead = newReason
+        saveToPersistentStore()
+    }
+    
     func delete(book: Book){
         guard let bookToDelete = books.index(of: book) else { return }
         books.remove(at: bookToDelete)

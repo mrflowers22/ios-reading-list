@@ -69,7 +69,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Reading List" id="SbN-yH-cpx">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TQI-ja-Uim"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TQI-ja-Uim">
+                            <connections>
+                                <segue destination="tC6-AC-rxN" kind="show" identifier="addSegue" id="NNf-G2-yoB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hdt-A1-aUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,4 +152,7 @@
     <resources>
         <image name="unchecked" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NNf-G2-yoB"/>
+    </inferredMetricsTieBreakers>
 </document>

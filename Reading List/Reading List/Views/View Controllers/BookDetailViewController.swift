@@ -10,13 +10,18 @@ import UIKit
 
 class BookDetailViewController: UIViewController {
 
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var reasonTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func saveBook(_ sender: UIBarButtonItem) {
+    }
+    
     /*
     // MARK: - Navigation
 
